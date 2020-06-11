@@ -16,20 +16,20 @@ class MainViewController: UIViewController {
     // MARK: Properties
     var currentExpression = [String]()
     var currentWord = String()
-    
+    var flipper = 1
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Clear the display
         mainTextField.text = ""
-        
     }
     
     // MARK: Functions
     func addDigit(digit: String) {
-        mainTextField.text += digit
+        let stringOfExpressions = currentExpression.joined(separator: " ")
         currentWord += digit
+        mainTextField.text = stringOfExpressions + " " + currentWord
     }
     
     func validateInput() -> Bool {
@@ -40,92 +40,56 @@ class MainViewController: UIViewController {
                 valid = true
             }
         }
-        if !valid {
-            // Alert controller or whatever
-            print("invalid")
-        }
         return valid
+    }
+    
+    func endOperand() {
+        if validateInput() {
+            // Coverting to Int removes leading zeros. This can be forced unwrapped as we already validated its an int.
+            currentExpression.append("\(Int(currentWord)!)")
+            currentWord = ""
+            mainTextField.text += " "
+            print(currentExpression)
+        } else {
+            invalidInput(message: "Either you have entered too big a number, or no number at all.")
+        }
     }
     
     func addOperator(operator_name: String) {
         if currentWord != "" {
-            // They have not finished entering the previous operand, show an AC
-            print("Unifisnied")
+            // They have not finished entering the previous operand, so end it for them
+            endOperand()
         }
-        else {
-            // Add the plus as normal
-            currentExpression.append(operator_name)
-            mainTextField.text += operator_name + " "
+        // Add the operator as normal
+        switch operator_name {
+        case "+":
+            currentExpression.append(Operators.addition.rawValue)
+            mainTextField.text += Operators.addition.rawValue + " "
+        case "-":
+            currentExpression.append(Operators.subtraction.rawValue)
+            mainTextField.text += Operators.subtraction.rawValue + " "
+        case "*":
+            currentExpression.append(Operators.mutliplication.rawValue)
+            mainTextField.text += Operators.mutliplication.rawValue + " "
+        case "/":
+            currentExpression.append(Operators.division.rawValue)
+            mainTextField.text += Operators.division.rawValue + " "
+        default:
+            fatalError("Invalid operator sent")
         }
     }
-
     
-    // MARK: Calculator buttons
-    @IBAction func one(_ sender: Any) {
-        addDigit(digit: "1")
-    }
-    @IBAction func two(_ sender: Any) {
-        addDigit(digit: "2")
-    }
-    @IBAction func three(_ sender: Any) {
-        addDigit(digit: "3")
-    }
-    @IBAction func four(_ sender: Any) {
-        addDigit(digit: "4")
-    }
-    @IBAction func five(_ sender: Any) {
-        addDigit(digit: "5")
-    }
-    @IBAction func six(_ sender: Any) {
-        addDigit(digit: "6")
-    }
-    @IBAction func seven(_ sender: Any) {
-        addDigit(digit: "7")
-    }
-    @IBAction func eight(_ sender: Any) {
-        addDigit(digit: "8")
-    }
-    @IBAction func nine(_ sender: Any) {
-        addDigit(digit: "9")
-    }
-    @IBAction func zero(_ sender: Any) {
-        addDigit(digit: "0")
-    }
-    
-    @IBAction func flipSign(_ sender: Any) {
-    }
-    
-    @IBAction func evaluate(_ sender: Any) {
-    }
-    
-    @IBAction func clear(_ sender: Any) {
-        mainTextField.text = ""
-        currentWord = ""
+    func clearEverything() {
         currentExpression = [String]()
+        currentWord = ""
+        mainTextField.text = ""
     }
     
-    @IBAction func enter(_ sender: Any) {
-        // They want to end the current character, so add it to the array of operands and opcodes.
-        // First, validate the input is a three digit integer
-        if validateInput() {
-            currentExpression.append(currentWord)
-            currentWord = ""
-            mainTextField.text += " "
-        }
-        print(currentExpression)
-        
+    func invalidInput(message: String) {
+        let ac = UIAlertController(title: "Invalid Input", message: message, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        present(ac, animated: true)
     }
-    @IBAction func plus(_ sender: Any) {
-        addOperator(operator_name: "+")
-    }
-    @IBAction func minus(_ sender: Any) {
-        addOperator(operator_name: "-")
-    }
-    @IBAction func times(_ sender: Any) {
-        addOperator(operator_name: "*")
-    }
-    @IBAction func divide(_ sender: Any) {
-        addOperator(operator_name: "/")
-    }
+    
+    // I have put all the IBAction code in the extension file in order to reduce number of lines in this one file
 }
-

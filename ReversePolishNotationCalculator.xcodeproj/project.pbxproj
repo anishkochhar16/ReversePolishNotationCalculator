@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		106819692492B2950059BBE7 /* MainViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106819682492B2950059BBE7 /* MainViewControllerExtension.swift */; };
+		107BC72C249254E100B20571 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107BC72B249254E100B20571 /* Operators.swift */; };
+		107BC72E24928DDE00B20571 /* RPNCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107BC72D24928DDE00B20571 /* RPNCalculator.swift */; };
+		107BC73024928F7100B20571 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107BC72F24928F7100B20571 /* Stack.swift */; };
 		10F34AC6248FEB35000A4470 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F34AC5248FEB35000A4470 /* AppDelegate.swift */; };
 		10F34AC8248FEB35000A4470 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F34AC7248FEB35000A4470 /* SceneDelegate.swift */; };
 		10F34ACA248FEB35000A4470 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F34AC9248FEB35000A4470 /* MainViewController.swift */; };
@@ -35,6 +39,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		106819682492B2950059BBE7 /* MainViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerExtension.swift; sourceTree = "<group>"; };
+		107BC72B249254E100B20571 /* Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
+		107BC72D24928DDE00B20571 /* RPNCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPNCalculator.swift; sourceTree = "<group>"; };
+		107BC72F24928F7100B20571 /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		10F34AC2248FEB35000A4470 /* ReversePolishNotationCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReversePolishNotationCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10F34AC5248FEB35000A4470 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10F34AC7248FEB35000A4470 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +110,10 @@
 				10F34AC5248FEB35000A4470 /* AppDelegate.swift */,
 				10F34AC7248FEB35000A4470 /* SceneDelegate.swift */,
 				10F34AC9248FEB35000A4470 /* MainViewController.swift */,
+				106819682492B2950059BBE7 /* MainViewControllerExtension.swift */,
+				107BC72D24928DDE00B20571 /* RPNCalculator.swift */,
+				107BC72F24928F7100B20571 /* Stack.swift */,
+				107BC72B249254E100B20571 /* Operators.swift */,
 				10F34ACB248FEB35000A4470 /* Main.storyboard */,
 				10F34ACE248FEB3A000A4470 /* Assets.xcassets */,
 				10F34AD0248FEB3A000A4470 /* LaunchScreen.storyboard */,
@@ -260,8 +272,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				10F34ACA248FEB35000A4470 /* MainViewController.swift in Sources */,
+				106819692492B2950059BBE7 /* MainViewControllerExtension.swift in Sources */,
+				107BC72E24928DDE00B20571 /* RPNCalculator.swift in Sources */,
 				10F34AC6248FEB35000A4470 /* AppDelegate.swift in Sources */,
 				10F34AC8248FEB35000A4470 /* SceneDelegate.swift in Sources */,
+				107BC73024928F7100B20571 /* Stack.swift in Sources */,
+				107BC72C249254E100B20571 /* Operators.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

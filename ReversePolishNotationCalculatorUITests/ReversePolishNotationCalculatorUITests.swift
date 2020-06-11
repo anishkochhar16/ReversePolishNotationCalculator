@@ -23,13 +23,45 @@ class ReversePolishNotationCalculatorUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // UI tests must launch the application that they test.
+    func testThatCalculatorDisplaysExpressionInTextField() {
+        
         let app = XCUIApplication()
         app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        app.buttons["8"].tap()
+        app.buttons["0"].tap()
+        app/*@START_MENU_TOKEN@*/.buttons["Enter"].staticTexts["Enter"]/*[[".buttons[\"Enter\"].staticTexts[\"Enter\"]",".staticTexts[\"Enter\"]"],[[[-1,1],[-1,0]]],[1]]@END_MENU_TOKEN@*/.tap()
+        app.buttons["6"].tap()
+        app.buttons["*"].tap()
+        
+        let textViewText = app.textViews.element.value as! String
+        XCTAssertEqual(textViewText, "80 6 * ")
+    }
+    
+    func testThatCalcultorGivesAnswerInTextField() {
+        let app = XCUIApplication()
+        app.launch()
+        
+        app.buttons["6"].tap()
+        app.buttons["0"].tap()
+        app/*@START_MENU_TOKEN@*/.buttons["Enter"].staticTexts["Enter"]/*[[".buttons[\"Enter\"].staticTexts[\"Enter\"]",".staticTexts[\"Enter\"]"],[[[-1,1],[-1,0]]],[1]]@END_MENU_TOKEN@*/.tap()
+        app.buttons["7"].tap()
+        app.buttons["1"].tap()
+        app.buttons["-"].tap()
+        app.buttons["EVAL"].tap()
+        
+        let textViewText = app.textViews.element.value as! String
+        XCTAssertEqual(textViewText, "-11")
+        
+    }
+    
+    func testTextViewIsNotSelectableAndButtonsAre() {
+        let app = XCUIApplication()
+        app.launch()
+        
+        XCTAssertEqual(app.textViews.element.isSelected, false)
+        XCTAssertEqual(app.buttons["5"].isEnabled, true)
+        XCTAssertEqual(app.buttons["5"].isSelected, false)
     }
 
     func testLaunchPerformance() throws {
